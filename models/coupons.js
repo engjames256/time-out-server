@@ -16,9 +16,10 @@ const couponSchema = new mongoose.Schema({
     type: Number,
     required: [true, "Must provide Product Price"],
   },
-  vip: {
-    type: Boolean,
-    default: false,
+  type: {
+    type: String,
+    enum: ["Ordinary", "VIP"],
+    default: "Ordinary",
   },
 });
 

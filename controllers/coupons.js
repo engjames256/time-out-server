@@ -5,12 +5,13 @@ import { scopedCoupons } from "../permissions/coupons.js";
 
 export const getAllCoupons = asyncWrapper(async (req, res) => {
   const coupons = await Coupon.find({});
-  res.status(200).json(scopedCoupons(req.user, coupons));
+  // res.status(200).json(scopedCoupons(req.user, coupons));
+  res.status(200).json({ coupons });
 });
 
 export const createCoupon = asyncWrapper(async (req, res) => {
-  const Coupon = await Coupon.create(req.body);
-  res.status(201).json({ coupon });
+  const coupon = await Coupon.create(req.body);
+  res.status(201).json({ poupon });
 });
 
 export const getCoupon = asyncWrapper(async (req, res, next) => {

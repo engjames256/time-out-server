@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import bodyParser from "body-parser";
 import products from "./routes/products.js";
 import coupons from "./routes/coupons.js";
@@ -16,6 +17,14 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
+
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
 
 app.use(bodyParser.json({ limit: "20mb", extended: true }));
 

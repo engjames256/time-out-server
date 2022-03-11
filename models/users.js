@@ -2,34 +2,41 @@ import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, "Please provide name"],
-    maxlength: 50,
-    minlength: 3,
+const userSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: [true, "Please provide name"],
+      maxlength: 50,
+      minlength: 3,
+    },
+    phone: {
+      type: String,
+      required: [true, "Please provide phone"],
+      maxlength: 50,
+      minlength: 10,
+    },
+    email: {
+      type: String,
+      required: [true, "Please provide email"],
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: [true, "Please provide password"],
+      minlength: 6,
+      maxlength: 12,
+    },
+    role: {
+      type: String,
+      enum: ["Manager", "Chef", "Waiter", "Waitress", "Customer", "Cashier"],
+      default: "Customer",
+    },
   },
-  email: {
-    type: String,
-    required: [true, "Please provide email"],
-    match: [
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-      "Please provide a valid email",
-    ],
-    unique: true,
-  },
-  password: {
-    type: String,
-    required: [true, "Please provide password"],
-    minlength: 6,
-    maxlength: 12,
-  },
-  role: {
-    type: String,
-    enum: ["Manager", "Chef", "Waiter", "Waitress", "Customer", "Cashier"],
-    default: "Customer",
-  },
-});
+  {
+    timestamps: true,
+  }
+);
 
 userSchema.pre("save", async function () {
   const salt = await bcrypt.genSalt(10);
