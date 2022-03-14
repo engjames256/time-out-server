@@ -1,7 +1,12 @@
 import mongoose from "mongoose";
+import Inc from "mongoose-sequence";
+const AutoIncrement = Inc(mongoose);
 
 const productSchema = new mongoose.Schema(
   {
+    productId: {
+      type: Number,
+    },
     name: {
       type: String,
       required: [true, "Must provide Product Name"],
@@ -17,10 +22,13 @@ const productSchema = new mongoose.Schema(
       required: [true, "Must provide Product Price"],
     },
   },
+
   {
     timestamps: true,
   }
 );
+
+productSchema.plugin(AutoIncrement, { inc_field: "productId" });
 
 const product = mongoose.model("product", productSchema);
 
