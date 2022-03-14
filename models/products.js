@@ -4,7 +4,7 @@ const AutoIncrement = Inc(mongoose);
 
 const productSchema = new mongoose.Schema(
   {
-    productId: {
+    id: {
       type: Number,
     },
     name: {
@@ -28,7 +28,10 @@ const productSchema = new mongoose.Schema(
   }
 );
 
-productSchema.plugin(AutoIncrement, { inc_field: "productId" });
+productSchema.plugin(AutoIncrement, {
+  id: "product_seq",
+  inc_field: "id",
+});
 
 const product = mongoose.model("product", productSchema);
 
