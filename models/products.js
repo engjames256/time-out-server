@@ -7,6 +7,10 @@ const productSchema = new mongoose.Schema(
     id: {
       type: Number,
     },
+    username: {
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
       required: [true, "Must provide Product Name"],
@@ -20,6 +24,9 @@ const productSchema = new mongoose.Schema(
     price: {
       type: Number,
       required: [true, "Must provide Product Price"],
+    },
+    image: {
+      type: String,
     },
   },
 

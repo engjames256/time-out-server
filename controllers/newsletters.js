@@ -7,6 +7,7 @@ export const getAllNewsletters = asyncWrapper(async (req, res) => {
 });
 
 export const createNewsletter = asyncWrapper(async (req, res) => {
+  console.log(req.body);
   const newsletter = await Newsletter.create(req.body);
   res.status(201).json({ newsletter });
 });

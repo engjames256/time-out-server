@@ -4,13 +4,14 @@ const AutoIncrement = Inc(mongoose);
 
 const newsletterSchema = new mongoose.Schema(
   {
-    newsletterId: {
+    id: {
       type: Number,
     },
     newsletter: {
       type: String,
       required: [true, "Must provide Newsletter"],
     },
+    username: { type: String, required: true },
   },
   {
     timestamps: true,
