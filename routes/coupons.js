@@ -1,5 +1,5 @@
-import { authUser, authToken } from "../middleware/auth.js";
-import { canViewCoupon } from "../permissions/coupons.js";
+// import { authUser, authToken } from "../middleware/auth.js";
+// import { canViewCoupon } from "../permissions/coupons.js";
 
 import express from "express";
 const router = express.Router();
