@@ -11,7 +11,7 @@ export const getAllCoupons = asyncWrapper(async (req, res) => {
 
 export const createCoupon = asyncWrapper(async (req, res) => {
   const coupon = await Coupon.create(req.body);
-  res.status(201).json({ poupon });
+  res.status(201).json({ coupon });
 });
 
 export const getCoupon = asyncWrapper(async (req, res, next) => {
