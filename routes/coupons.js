@@ -10,7 +10,7 @@ import {
   getCoupon,
   updateCoupon,
   deleteCoupon,
-} from "../controllers/Coupons.js";
+} from "../controllers/coupons.js";
 
 router.route("/").get(getAllCoupons).post(createCoupon);
 router.route("/:id").get(getCoupon).patch(updateCoupon).delete(deleteCoupon);
