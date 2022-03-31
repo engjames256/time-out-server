@@ -7,7 +7,7 @@ import {
   getMessage,
   updateMessage,
   deleteMessage,
-} from "../controllers/Messages.js";
+} from "../controllers/messages.js";
 
 router.route("/").get(getAllMessages).post(createMessage);
 router.route("/:id").get(getMessage).patch(updateMessage).delete(deleteMessage);
