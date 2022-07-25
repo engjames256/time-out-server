@@ -11,7 +11,19 @@ export const register = async (req, res) => {
   const user = await User.create({ ...req.body });
   const token = user.createJWT();
   console.log(user);
-  res.status(201).json({ user: { name: user.name, role: user.role }, token });
+  res.status(201).json({
+    user: {
+      nin: user.nin,
+      name: user.name,
+      role: user.role,
+      email: user.email,
+      image: user.image,
+      phone: user.phone,
+      gender: user.gender,
+      address: user.address,
+    },
+    token,
+  });
 };
 
 export const login = async (req, res) => {
@@ -30,7 +42,19 @@ export const login = async (req, res) => {
   }
 
   const token = user.createJWT();
-  res.status(200).json({ user: { name: user.name, role: user.role }, token });
+  res.status(200).json({
+    user: {
+      nin: user.nin,
+      name: user.name,
+      role: user.role,
+      email: user.email,
+      image: user.image,
+      phone: user.phone,
+      gender: user.gender,
+      address: user.address,
+    },
+    token,
+  });
 };
 
 export const dashboard = async (req, res) => {

@@ -27,6 +27,18 @@ const userSchema = new mongoose.Schema(
       minlength: 6,
       maxlength: 12,
     },
+    image: {
+      type: String,
+    },
+    nin:{
+      type:String,
+    },
+    gender:{
+      type:String,
+    },
+    address:{
+      type:String,
+    },
     role: {
       type: String,
       enum: ["Manager", "Chef", "Waiter", "Waitress", "Customer", "Cashier"],
@@ -45,7 +57,17 @@ userSchema.pre("save", async function () {
 
 userSchema.methods.createJWT = function () {
   return jwt.sign(
-    { userId: this._id, name: this.name, role: this.role },
+    {
+      userId: this._id,
+      nin: this.nin,
+      role: this.role,
+      name: this.name,
+      phone: this.phone,
+      email: this.email,
+      image: this.image,
+      gender: this.gender,
+      address: this.address,
+    },
     process.env.JWT_SECRET,
     {
       expiresIn: "24h",
